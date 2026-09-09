@@ -149,7 +149,7 @@ function render() {
   // Módulos
   $('[data-modulos]').innerHTML = MODULOS.map(([t, d, ic], i) => `
     <div class="card-cream p-6 flex flex-col h-full">
-      <picture class="contents"><source type="image/avif" srcset="assets/img/mod-${ord(i + 1)}.avif?v=${IMG_V}"><img src="assets/img/mod-${ord(i + 1)}.webp?v=${IMG_V}" alt="${t}" loading="lazy" decoding="async" class="mb-4 w-full h-auto rounded-xl object-contain"></picture>
+      <picture class="contents"><source type="image/avif" srcset="assets/img/mod-${ord(i + 1)}.avif?v=${IMG_V}"><img src="assets/img/mod-${ord(i + 1)}.webp?v=${IMG_V}" alt="${t}" loading="lazy" decoding="async" width="560" height="560" class="mb-4 w-full h-auto rounded-xl object-contain"></picture>
       <div class="flex items-center gap-3">
         <span class="text-xs font-mono font-bold text-accent tracking-widest">${ord(i + 1)}</span>
         <span class="h-px flex-1 bg-accent/20"></span>
@@ -195,7 +195,7 @@ function render() {
     <figure class="w-[300px] shrink-0 overflow-hidden rounded-2xl border border-slate-blue/20 bg-background shadow-[0_20px_46px_-32px_rgba(7,27,51,.35)]">
       <picture class="contents">
         <source type="image/avif" srcset="assets/img/depo-${n}.avif?v=${IMG_V}">
-        <img src="assets/img/depo-${n}.webp?v=${IMG_V}" alt="Testimonio de una profesional" loading="lazy" decoding="async" class="block w-full h-auto">
+        <img src="assets/img/depo-${n}.webp?v=${IMG_V}" alt="Testimonio de una profesional" loading="lazy" decoding="async" width="600" height="1066" class="block w-full h-auto">
       </picture>
     </figure>`;
   const elT = $('[data-testimonios]');
