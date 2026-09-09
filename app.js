@@ -271,10 +271,16 @@ function scrollSuave() {
 
     if (reduce) { window.scrollTo(0, meta); history.replaceState(null, '', '#' + id); return; }
 
-    const ini = window.scrollY, delta = meta - ini, t0 = performance.now();
+    // El destino se recalcula en CADA frame: las imágenes lazy siguen
+    // cargando durante la animación y empujan la sección hacia abajo. Con
+    // un delta fijo, en la primera visita el scroll se queda corto.
+    const ini = window.scrollY, t0 = performance.now();
     const paso = ahora => {
       const t = Math.min(1, (ahora - t0) / DUR);
-      window.scrollTo(0, ini + delta * suave(t));
+      const finAhora = destino.getBoundingClientRect().top + window.scrollY;
+      const topeAhora = document.documentElement.scrollHeight - window.innerHeight;
+      const metaAhora = Math.max(0, Math.min(finAhora, topeAhora));
+      window.scrollTo(0, ini + (metaAhora - ini) * suave(t));
       if (t < 1) requestAnimationFrame(paso);
       else history.replaceState(null, '', '#' + id);
     };
